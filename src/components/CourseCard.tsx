@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "./UI/ProgressBar";
 
 interface Props {
   courseID: number;

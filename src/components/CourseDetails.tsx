@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "./UI/LoadingSpinner";
 import CourseProgress from "./CourseProgress";
 
 const CourseDetails = () => {

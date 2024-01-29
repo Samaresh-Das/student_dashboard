@@ -1,0 +1,181 @@
+{
+  "courses": [
+    {
+      "completed": 5,
+      "description": "Learn the basics of React Native development and build your first mobile app.",
+      "duration": "8 weeks",
+      "enrollmentStatus": "Open",
+      "id": 1,
+      "instructor": "John Doe",
+      "location": "Online",
+      "name": "Introduction to React Native",
+      "prerequisites": ["Basic JavaScript knowledge", "Familiarity with React"],
+      "schedule": "Tuesdays and Thursdays, 6:00 PM - 8:00 PM",
+      "students": [
+        {
+          "email": "alice@example.com",
+          "id": 101,
+          "name": "Alice Johnson"
+        },
+        {
+          "email": "bob@example.com",
+          "id": 102,
+          "name": "Bob Smith"
+        }
+      ],
+      "syllabus": [
+        {
+          "content": "Overview of React Native, setting up your development environment.",
+          "done": true,
+          "topic": "Introduction to React Native",
+          "week": 1
+        },
+        {
+          "content": "Creating a simple web app using React components.",
+          "done": false,
+          "topic": "Building Your First App",
+          "week": 2
+        }
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1595675024853-0f3ec9098ac7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "completed": 15,
+      "description": "Learn the basics of React  development and build your first web app.",
+      "duration": "8 weeks",
+      "enrollmentStatus": "Open",
+      "id": 2,
+      "instructor": "John Doe",
+      "location": "Online",
+      "name": "Introduction to React",
+      "prerequisites": ["Basic JavaScript knowledge", "Familiarity with React"],
+      "schedule": "Tuesdays and Thursdays, 6:00 PM - 8:00 PM",
+      "students": [
+        {
+          "email": "alice@example.com",
+          "id": 101,
+          "name": "Alice Johnson"
+        },
+        {
+          "email": "bob@example.com",
+          "id": 102,
+          "name": "Bob Smith"
+        }
+      ],
+      "syllabus": [
+        {
+          "content": "Overview of React, setting up your development environment.",
+          "done": true,
+          "topic": "Introduction to React",
+          "week": 1
+        },
+        {
+          "content": "Creating a simple web app using React components.",
+          "done": false,
+          "topic": "Building Your First App",
+          "week": 2
+        }
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "completed": 50,
+      "description": "Learn the basics of Data structure and algorithm from scratch",
+      "duration": "5 weeks",
+      "enrollmentStatus": "In Progress",
+      "id": 3,
+      "instructor": "Kunal Kushwaha",
+      "location": "Online",
+      "name": "Introduction to Data Structure and Algorithm",
+      "prerequisites": [
+        "Basic Maths",
+        "Familiarity with a programming language"
+      ],
+      "schedule": "Monday and Wednesday, 6:00 PM - 8:00 PM",
+      "students": [
+        {
+          "email": "alice@example.com",
+          "id": 101,
+          "name": "Alice Johnson"
+        },
+        {
+          "email": "bob@example.com",
+          "id": 102,
+          "name": "Bob Smith"
+        }
+      ],
+      "syllabus": [
+        {
+          "content": "Learning Arrays, searching, sorting",
+          "done": true,
+          "topic": "Introduction to Arrays",
+          "week": 1
+        },
+        {
+          "content": "Binary Search, Linear Search",
+          "done": true,
+          "topic": "Searching",
+          "week": 2
+        },
+        {
+          "content": "Cycle, bubble, insertion, merger sort",
+          "done": false,
+          "topic": "Sorting",
+          "week": 3
+        },
+        {
+          "content": "Binary Search, Linear Search",
+          "done": false,
+          "topic": "Searching",
+          "week": 4
+        }
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "completed": 20,
+      "description": "Learn Advance Data structure and algorithm to crack any interview",
+      "duration": "7 weeks",
+      "enrollmentStatus": "Closed",
+      "id": 4,
+      "instructor": "Kunal Kushwaha",
+      "location": "Online",
+      "name": "Advanced Data Structure and Algorithm",
+      "prerequisites": ["Knowledge of basic DSA", "Good in Maths"],
+      "schedule": "Tuesdays and Thursdays, 6:00 PM - 8:00 PM",
+      "students": [
+        {
+          "email": "alice@example.com",
+          "id": 101,
+          "name": "Alice Johnson"
+        },
+        {
+          "email": "bob@example.com",
+          "id": 102,
+          "name": "Bob Smith"
+        }
+      ],
+      "syllabus": [
+        {
+          "content": "Learning Linked Lists",
+          "done": true,
+          "topic": "Introduction to Linked Lists",
+          "week": 1
+        },
+        {
+          "content": "Reversing, Adding Nodes",
+          "done": false,
+          "topic": "Linked List Operations",
+          "week": 2
+        },
+        {
+          "content": "Learn Recursion from scratch",
+          "done": false,
+          "topic": "Recursion",
+          "week": 3
+        }
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
+  ]
+}
