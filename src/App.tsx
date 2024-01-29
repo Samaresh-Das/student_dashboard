@@ -5,6 +5,7 @@ import {
 
 import Dashboard from "./components/Dashboard";
 import CourseDetails from "./components/CourseDetails";
+import Header from "./components/UI/Header";
 
 export const router = Router([
   {
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
       <div>
+        <Header />
         <RouterProvider router={router} />
       </div>
     </>

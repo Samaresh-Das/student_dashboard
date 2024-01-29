@@ -38,7 +38,8 @@ const CourseCard = ({
         <ProgressBar progress={completed} />
         <p className="text-white my-1">Progress: {completed}%</p>
         <Link
-          to={`/${courseID}`}
+          // id - 1 is the index in the array
+          to={`/${courseID - 1}`}
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Go to Course
