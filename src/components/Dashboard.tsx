@@ -47,6 +47,7 @@ const Dashboard = () => {
             courseDescription={course.description}
             instructor={course.instructor}
             completed={course.completed}
+            image={course.thumbnail}
           />
         ))}
     </div>

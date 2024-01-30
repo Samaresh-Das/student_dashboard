@@ -7,6 +7,7 @@ interface Props {
   courseDescription: string;
   instructor: string;
   completed: number;
+  image: string;
 }
 
 const CourseCard = ({
@@ -15,13 +16,14 @@ const CourseCard = ({
   courseDescription,
   instructor,
   completed,
+  image,
 }: Props) => {
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <img
-          className="rounded-t-lg"
-          src="/docs/images/blog/image-1.jpg"
+          className="rounded-t-lg h-[300px] object-fill"
+          src={image}
           alt=""
         />
       </a>
