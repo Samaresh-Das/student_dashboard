@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import { app } from "../firebase";
+
 import LoadingSpinner from "./UI/LoadingSpinner";
 import CourseProgress from "./CourseProgress";
+import { AiOutlineLike } from "react-icons/ai";
 
 const CourseDetails = () => {
+  const database = getDatabase(app);
   const { courseId } = useParams();
   const [courseDetails, setCourseDetails] = useState<any>(null);
+  const [likes, setLikes] = useState(0);
 
   useEffect(() => {
     const getCourseDetails = async () => {
       try {
-        const response = await fetch(
-          `https://student-dashboard-bf0b4-default-rtdb.asia-southeast1.firebasedatabase.app/courses/${courseId}.json`
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setCourseDetails(data);
+        //get the course details from database through firebase predefined SDK
+        const courses = ref(database, `courses/${courseId}`);
+        onValue(courses, (snapshot) => {
+          const data = snapshot.val();
+          setCourseDetails(data);
+        });
       } catch (error: any) {
         console.error("Error fetching course details:", error.message);
       }
@@ -28,6 +30,52 @@ const CourseDetails = () => {
     getCourseDetails();
   }, [courseId]);
 
+  //get likes handler. It get course likes in real time
+  useEffect(() => {
+    const getLikes = ref(database, `courses/${courseId}/likes`);
+    onValue(getLikes, (snapshot) => {
+      const data = snapshot.val();
+      setLikes(data);
+    });
+  }, [courseId]);
+
+  //incrementing likes in realtime in DB
+  const incrementLikes = () => {
+    setLikes((prevLikes) => prevLikes + 1);
+    set(ref(database, `courses/${courseId}/likes`), likes + 1)
+      .then(() => {
+        console.log("Likes updated successfully");
+      })
+      .catch((error) => {
+        console.error("Error updating likes:", error.message);
+        // Revert the state if there's an error
+        setLikes((prevLikes) => prevLikes - 1);
+      });
+  };
+
+  //mark course as completed or incomplete
+  const toggleCompletion = () => {
+    const oppositeValue = !courseDetails.isCompleted;
+
+    set(ref(database, `courses/${courseId}/isCompleted`), oppositeValue)
+      .then(() => {
+        console.log(
+          `Course marked as ${
+            oppositeValue ? "completed" : "incomplete"
+          } successfully`
+        );
+      })
+      .catch((error) => {
+        console.error(
+          `Error marking course as ${
+            oppositeValue ? "completed" : "incomplete"
+          }:`,
+          error.message
+        );
+      });
+  };
+
+  //conditional statements should always come after use effects
   if (!courseDetails) {
     return <LoadingSpinner />;
   }
@@ -47,6 +95,12 @@ const CourseDetails = () => {
             alt="Course image"
             className="w-[300px] h-[200px] object-cover rounded-xl drop-shadow-lg"
           />
+          <div className="md:hidden flex flex-row my-5">
+            <button onClick={incrementLikes}>
+              <AiOutlineLike className="text-[20px] hover:text-blue-700" />
+            </button>
+            <p className="my-auto ml-5 text-sm">Likes {likes}</p>
+          </div>
         </div>
         <div className="mr-10">
           <p className="text-wrap">{courseDetails.description}</p>
@@ -91,6 +145,12 @@ const CourseDetails = () => {
             alt="Course image"
             className="w-[300px] h-[200px] object-cover rounded-xl drop-shadow-lg"
           />
+          <div className="flex flex-row my-5">
+            <button onClick={incrementLikes}>
+              <AiOutlineLike className="text-[40px] hover:text-blue-700" />
+            </button>
+            <p className="my-auto ml-5">Likes {likes}</p>
+          </div>
         </div>
       </div>
 
@@ -103,7 +163,22 @@ const CourseDetails = () => {
         </div>
       </div>
 
-      <CourseProgress syllabus={courseDetails.syllabus} />
+      <CourseProgress
+        syllabus={courseDetails.syllabus}
+        isCompleted={courseDetails.isCompleted}
+      />
+
+      <button
+        type="button"
+        className={`focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ${
+          courseDetails.isCompleted
+            ? "bg-red-700 hover:bg-red-800 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+            : "bg-green-700 hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900 focus:ring-green-300"
+        }`}
+        onClick={toggleCompletion}
+      >
+        {courseDetails.isCompleted ? "Mark as Incomplete" : "Mark as Completed"}
+      </button>
     </div>
   );
 };

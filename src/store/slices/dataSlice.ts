@@ -1,4 +1,6 @@
+import { app } from "@/firebase";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getDatabase, ref, onValue } from "firebase/database";
 
 interface Student {
   //type of subItems
@@ -45,13 +47,24 @@ const initialState: InitialState = {
   filter: "",
 };
 
-//createAsyncThunk expose promises to use. It makes working with promises a delight
+//getting all course data from firebase using SDK
 export const fetchData = createAsyncThunk(
-  "https://student-dashboard-bf0b4-default-rtdb.asia-southeast1.firebasedatabase.app/courses.json",
-  async (url: string) => {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
+  "course/fetchCourseData",
+  async () => {
+    const database = getDatabase(app);
+    return new Promise<Course[]>((resolve, reject) => {
+      const coursesRef = ref(database, "courses");
+
+      onValue(coursesRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          const coursesArray: Course[] = Object.values(data);
+          resolve(coursesArray);
+        } else {
+          reject(new Error("No data available"));
+        }
+      });
+    });
   }
 );
 
