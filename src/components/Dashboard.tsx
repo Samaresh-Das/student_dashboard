@@ -1,24 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import CourseCard from "./CourseCard";
 import LoadingSpinner from "./UI/LoadingSpinner";
 import { useAppDispatch, useAppSelector } from "../store/slices/type";
 import { fetchData } from "../store/slices/dataSlice";
 
-const URL =
-  "https://student-dashboard-bf0b4-default-rtdb.asia-southeast1.firebasedatabase.app/courses.json";
-
-interface Course {
-  id: number;
-  name: string;
-  description: string;
-  instructor: string;
-  completed: number;
-}
-
 const Dashboard = () => {
-  const { course, loading, error, filter } = useAppSelector(
-    (state) => state.course
-  );
+  const { course, loading, filter } = useAppSelector((state) => state.course);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

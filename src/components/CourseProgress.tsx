@@ -1,5 +1,3 @@
-import React from "react";
-
 interface SyllabusItem {
   // Define the structure of each item in the syllabus array
   // Adjust these properties based on the actual structure of your objects
