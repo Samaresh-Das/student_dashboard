@@ -12,16 +12,19 @@ interface SyllabusItem {
 
 interface Props {
   syllabus: SyllabusItem[];
+  isCompleted: boolean;
 }
 
-const CourseProgress = ({ syllabus }: Props) => {
+const CourseProgress = ({ syllabus, isCompleted }: Props) => {
   return (
     <ol className="relative text-gray-500 border-s border-gray-200 dark:border-gray-700 dark:text-gray-400 mt-10 ml-5">
       {syllabus.map((topic, index) => (
         <li className="mb-10 ms-6" key={index}>
           <span
             className={`absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -start-4 ring-4 ring-white  ${
-              topic.done
+              isCompleted
+                ? "bg-green-500 dark:ring-green-700"
+                : topic.done
                 ? "bg-green-500 dark:ring-green-700"
                 : "dark:ring-gray-400"
             }`}

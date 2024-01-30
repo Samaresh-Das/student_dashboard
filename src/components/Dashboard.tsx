@@ -22,7 +22,7 @@ const Dashboard = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchData(URL));
+    dispatch(fetchData());
   }, []);
 
   //filtering data based on name and tutor
